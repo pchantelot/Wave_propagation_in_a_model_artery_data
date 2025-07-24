@@ -1,7 +1,7 @@
 # Wave propagation in a model artery: data and figures
 
 This repository contains the data and the [Julia](https://github.com/JuliaLang) scripts to reproduce the figures in:
-> P. Chantelot, A. Delory, C. Prada, and F. Lemoult, Wave propagation in a model artery, *ArXiv:xx* (2025).
+> P. Chantelot, A. Delory, C. Prada, and F. Lemoult, Wave propagation in a model artery, [10.48550/arXiv.2507.17698](https://doi.org/10.48550/arXiv.2507.17698) (2025).
 
 > [!TIP]
 > Install the following packages to plot the figures: `CairoMakie`, `ColorSchemes`, `LaTeXStrings`, `MathTeXEngine`, `FileIO`, `UnPack`, and `NaturalSort`. Deflection calculations require additional packages. 
