@@ -14,7 +14,7 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [
             ax11.limits = (-51, 76, -5, 35)
             ax11.aspect = DataAspect()
             hidedecorations!(ax11)
-            #hidespines!(ax11)
+            hidespines!(ax11)
             # First view
             poly!(ax11, Rect(0, 0, 50, 10*1.3), color = :hotpink2)
             poly!(ax11, Rect(0, -4, 50, 4), color = :grey25)
@@ -24,10 +24,6 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [
             arrows!(ax11, [53], [6], [0], [5], linewidth = 2, arrowsize = 12)
             arrows!(ax11, [53], [6], [0], [-5], linewidth = 2, arrowsize = 12)
             text!(ax11, 54, 6.2, text = L"w = \lambda_z w_0", align = (:left, :center), fontsize = 16)
-            #text!(ax11, 54, 13, text = L"\mathbf{F} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \lambda_3^{-1} & 0 \\ 0 & 0 & \lambda_3 \end{pmatrix}", 
-            #    align = (:left, :center), fontsize = 16)
-            #teximg!(ax11, L"\mathbf{F} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1/\lambda_z & 0 \\ 0 & 0 & \lambda_z \end{pmatrix}";
-            #    position = (42, 26), align = (:left, :center), scale = 1)
             # axis right
             arrows!(ax11, [0, 0], [20, 20], [0, 5], [5, 0], linewidth = 1.5, arrowsize = 10)
             text!(ax11, 5.5, 19.5, text = L"x", align = (:left, :center), fontsize = 16)
@@ -59,6 +55,17 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [
             text!(ax11, 25, 31, text = L"\mathrm{Camera}", align = (:center, :center), fontsize = 16)
             lines!(ax11, [22, 23.5], [22, 24.5], color = :black, linewidth = 1.5)
             lines!(ax11, [26.5, 28], [24.5, 22], color = :black, linewidth = 1.5)
+            # image in inset
+            inset = Axis(panel1[1,1])
+            inset.halign = 1.
+            inset.valign = 0.7
+            inset.aspect = DataAspect()
+            inset.width = Relative(1/4)
+            inset.height = Relative(1/4)
+            hidedecorations!(inset)
+            hidespines!(inset)
+            img = load(joinpath(@__DIR__,"defgrad.png"))
+            image!(inset, rotr90(img))
 
         panel2 = fig[1,2] = GridLayout()
         Label(panel2[1, 1, TopLeft()], "(b)", padding = (-35, 0, -5, 0), fontsize = 16)

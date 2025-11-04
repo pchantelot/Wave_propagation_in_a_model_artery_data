@@ -105,10 +105,10 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Set1_5)[[1,3,2,4,5]
                 lines!(ax2, x , x .* 1500 / (2*pi), color = :black, linestyle = :dashdot, linewidth = 4,
                     label = L" V_\phi = V_f")
                 lines!(ax2, x, x .* sqrt(3*μs/ρs) / (2*pi), color = :black, linewidth = 4,
-                    label = L" V_\phi = \sqrt{E_s/\rho_s}")
+                    label = L" V_\phi = \sqrt{E_0/\rho_s}")
                 lines!(ax2, x, x  .* sqrt(μs/ρs) / (2*pi), color = :black, linewidth = 4, 
                     linestyle = (:dash, :dense),
-                    label = L"V_\phi = \sqrt{\mu_s/\rho_s}")
+                    label = L"V_\phi = \sqrt{\mu_0/\rho_s}")
                 lines!(ax2, x, x .* sqrt(3*μs/ρf * h / R / 2) / (2*pi),
                     label = L"V_\phi = V_{MK}, \; \mathrm{Eq. \; (3)}", color = ColorSchemes.Set1_4[2])
                 lines!(ax2, x, (x).^2 .* sqrt.(3*μs*R*h ./ ρf) / (2*pi),
