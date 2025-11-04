@@ -1,4 +1,4 @@
-using CairoMakie, ColorSchemes, LaTeXStrings, MathTeXEngine, MakieTeX
+using CairoMakie, ColorSchemes, LaTeXStrings, MathTeXEngine
 using FileIO, UnPack, NaturalSort
 cd(@__DIR__)
 include("../preamble.jl")
@@ -7,14 +7,14 @@ tfiles = filter(x -> occursin("disp",x),readdir(joinpath(@__DIR__,"tension/")))
 tpredic = filter(x -> occursin("_2",x),readdir(joinpath(@__DIR__,"tension/")))
 
 with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [:circle])) do 
-    fig = Figure(size = (502, 502), figure_padding = (3,14,0,-10))
+    fig = Figure(size = (2 * 402, 2/3 * 402), figure_padding = (2,16,2,2))
         panel1 = fig[1,1] = GridLayout()
-        Label(panel1[1, 1, TopLeft()], "(a)", padding = (-90, 0, -40, 0), fontsize = 16)
+        Label(panel1[1, 1, TopLeft()], "(a)", padding = (0, 0, -5, 0), fontsize = 16)
             ax11 = Axis(panel1[1,1])
-            ax11.limits = (-47, 72, -5, 35)
+            ax11.limits = (-51, 76, -5, 35)
             ax11.aspect = DataAspect()
             hidedecorations!(ax11)
-            hidespines!(ax11)
+            #hidespines!(ax11)
             # First view
             poly!(ax11, Rect(0, 0, 50, 10*1.3), color = :hotpink2)
             poly!(ax11, Rect(0, -4, 50, 4), color = :grey25)
@@ -23,28 +23,28 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [
                 strokecolor = :black, linestyle = (:dot, :dense))
             arrows!(ax11, [53], [6], [0], [5], linewidth = 2, arrowsize = 12)
             arrows!(ax11, [53], [6], [0], [-5], linewidth = 2, arrowsize = 12)
-            text!(ax11, 54, 6.5, text = L"w = \lambda_z w_0", align = (:left, :center), fontsize = 16)
+            text!(ax11, 54, 6.2, text = L"w = \lambda_z w_0", align = (:left, :center), fontsize = 16)
             #text!(ax11, 54, 13, text = L"\mathbf{F} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \lambda_3^{-1} & 0 \\ 0 & 0 & \lambda_3 \end{pmatrix}", 
             #    align = (:left, :center), fontsize = 16)
-            teximg!(ax11, L"\mathbf{F} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1/\lambda_z & 0 \\ 0 & 0 & \lambda_z \end{pmatrix}";
-                position = (42, 26), align = (:left, :center), scale = 1)
+            #teximg!(ax11, L"\mathbf{F} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1/\lambda_z & 0 \\ 0 & 0 & \lambda_z \end{pmatrix}";
+            #    position = (42, 26), align = (:left, :center), scale = 1)
             # axis right
-            arrows!(ax11, [0, 0], [20, 20], [0, 4], [4, 0], linewidth = 1.5, arrowsize = 10)
-            text!(ax11, 4.5, 19, text = L"x", align = (:left, :center), fontsize = 16)
-            text!(ax11, -1, 25.5, text = L"z", align = (:right, :center), fontsize = 16)
+            arrows!(ax11, [0, 0], [20, 20], [0, 5], [5, 0], linewidth = 1.5, arrowsize = 10)
+            text!(ax11, 5.5, 19.5, text = L"x", align = (:left, :center), fontsize = 16)
+            text!(ax11, -1, 26.5, text = L"z", align = (:right, :center), fontsize = 16)
             # second view
             poly!(ax11, Rect(-26, 5, 10*1.3, 3), color = :hotpink2)
             poly!(ax11, Rect(-24.5, 4.55, 10, 3*1.3), color = (:hotpink2,0), 
                 strokewidth = 3, strokecolor = :black, linestyle = (:dot, :dense))
             poly!(ax11, Rect(-30, 5, 4, 3), color = :grey25)
             poly!(ax11, Rect(-13, 5, 4, 3), color = :grey25)
-            arrows!(ax11, [-31], [3.5], [0], [0.2], linewidth = 2, arrowsize = 10)
-            arrows!(ax11, [-31], [9.5], [0], [-0.2], linewidth = 2, arrowsize = 10)
+            arrows!(ax11, [-31], [3.5], [0], [2], linewidth = 2, arrowsize = 10)
+            arrows!(ax11, [-31], [9.5], [0], [-2], linewidth = 2, arrowsize = 10)
             text!(ax11, -35, 6.5, text = L"h = \frac{h_0}{λ_z} ", align = (:right, :center), fontsize = 16)
             # axis top
-            arrows!(ax11, [-7, -7], [3, 3], [0, -4], [4, 0], linewidth = 1.5, arrowsize = 10)
-            text!(ax11, -6, 9, text = L"y", align = (:left, :center), fontsize = 16)
-            text!(ax11, -12, 2, text = L"z", align = (:right, :center), fontsize = 16)
+            arrows!(ax11, [-7, -7], [3, 3], [0, -5], [5, 0], linewidth = 1.5, arrowsize = 10)
+            text!(ax11, -6, 10, text = L"y", align = (:left, :center), fontsize = 16)
+            text!(ax11, -12, 1, text = L"z", align = (:right, :center), fontsize = 16)
             # Laser sheet
             θ = -30 *pi /180
             c = [-37, 15.5]
@@ -60,7 +60,7 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [
             lines!(ax11, [22, 23.5], [22, 24.5], color = :black, linewidth = 1.5)
             lines!(ax11, [26.5, 28], [24.5, 22], color = :black, linewidth = 1.5)
 
-        panel2 = fig[2,1] = GridLayout()
+        panel2 = fig[1,2] = GridLayout()
         Label(panel2[1, 1, TopLeft()], "(b)", padding = (-35, 0, -5, 0), fontsize = 16)
         ax12 = Axis(panel2[1,1])
         #ax12.alignmode = Outside()
@@ -80,8 +80,6 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [
         end
         axislegend(ax12, position = :rb, labelsize = 16)
     
-        rowsize!(fig.layout, 2, Relative(602/1000))
-    rowgap!(fig.layout, 0)
     display(fig)
     save(joinpath(@__DIR__,"Figure3.pdf"),fig; pt_per_unit = 1)
 end      

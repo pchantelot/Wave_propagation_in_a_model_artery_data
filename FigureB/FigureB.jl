@@ -71,7 +71,7 @@ for i  in eachindex(x)
 end
 
 with_theme(My_theme) do 
-    f = Figure(size = (502, 220), figure_padding = (3,14,1,3))
+    f = Figure(size = (402, 176), figure_padding = (3,14,1,3))
     panel1 = f[1,1] = GridLayout()
         ax21 = Axis(panel1[1,1])
         ax21.xlabel = L"\Delta P \,\, \mathrm{(Pa)}"

@@ -9,7 +9,7 @@ cpredic = filter(x -> occursin("_2",x),readdir(joinpath(@__DIR__,"courbure/")))
 cpredic = sort(cpredic, lt = natural)
 
 with_theme(My_theme, palette = (color = reverse(ColorSchemes.RdPu_4), marker = [:circle])) do 
-    fig = Figure(size = (502, 2/3*502), figure_padding = (1,14,1,10))
+    fig = Figure(size = (402, 2/3*402), figure_padding = (2,14,1,10))
 
         ax22 = Axis(fig[1,1])
         ax22.ylabel = L"f \,\, \mathrm{(Hz)}"
@@ -45,9 +45,9 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.RdPu_4), marker = [
         arc!(ax21,Point2f(0), 15, pi/2 - 1/2 - 3/10, pi/2 -1/2, linewidth = 10 , color = :grey25)
         arc!(ax21,Point2f(0), 19, pi/2 -1/2 + 1/10, pi/2 + 1/2 - 1/10, color = :black, linewidth = 2)
         arrows!(ax21, 19*[cos(pi/2-1/2+1/10)], 19*[sin(pi/2-1/2+1/10)], 
-            0.2*[cos(1/2-1/10)], 0.2*[-sin(1/2-1/10)], arrowsize = 12)
+            2*[cos(1/2-1/10)], 2*[-sin(1/2-1/10)], arrowsize = 12)
         arrows!(ax21, 19*[cos(pi/2+1/2-1/10)], 19*[sin(pi/2+1/2-1/10)], 
-            0.2*[-cos(-1/2+1/10)], 0.2*[sin(-1/2+1/10)], arrowsize = 12)
+            2*[-cos(-1/2+1/10)], 2*[sin(-1/2+1/10)], arrowsize = 12)
         text!(ax21, 0, 20, text = L"w_0", align = (:center, :bottom), fontsize = 16)
         # Radius
         lines!(ax21, [0, 15], [0, 0] , color = :black)

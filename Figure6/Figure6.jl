@@ -13,7 +13,7 @@ dP = [0, 2, 5, 8, 15, 30] *1000*9.81*1e-2
 Vb = [2.8, 3.5, 3.8, 4.1, 4.8, 5.1]
 
 with_theme(My_theme, palette = (color = reverse(ColorSchemes.Blues_7), marker = [:circle])) do 
-    fig = Figure(size = (502, 527), figure_padding = (4,16,3,1))
+    fig = Figure(size = (4/2 *402, 2/3 * 402), figure_padding = (4,16,3,1))
         
         panel2 = fig[1,1] = GridLayout()
         Label(panel2[1, 1, TopLeft()], "(a)", padding = (-40, 0, -5, 0), fontsize = 16)
@@ -34,8 +34,8 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Blues_7), marker = 
             end
             # Inset
             inset = Axis(panel2[1,1])
-            inset.halign = 0.23
-            inset.valign = 0.9
+            inset.halign = 0.24
+            inset.valign = 0.93
             inset.width = Relative(45/100)
             inset.height = Relative(45/100)
             inset.limits = (0, 150, 0, 50)
@@ -51,7 +51,7 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Blues_7), marker = 
                 lines!(inset, x, 2.8*x/(2*pi), linestyle = :dash)
                 poly!(inset, Point2f[(45, 25), (70, 25+2.8*25/(2*pi)), (45, 25+2.8*25/(2*pi))],
                     color = (:grey, 0), strokewidth = 2, strokecolor = :black)
-                text!(inset, 0, 38, text = L"V_{b}", align = (:left, :center), 
+                text!(inset, -1, 43, text = L"V_{b}", align = (:left, :center), 
                     fontsize = 20, color = :black)
             translate!(inset.scene, 0, 0, 10)
             # this needs separate translation as well, since it's drawn in the parent scene
@@ -66,12 +66,13 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Blues_7), marker = 
                 lines!(ax22, ΔP, v, color = :black, linestyle = :dot, label = "static model")
             data = load(joinpath(@__DIR__,"vMKdef.jld2"))
             @unpack v, ΔP = data
-                    lines!(ax22, ΔP, v, color = :black, label = "incremental model")
+                    lines!(ax22, ΔP, v, color = :black, label = "incremental\n model")
                 scatter!(ax22, dP, Vb,
                     color = 1:6, colormap = reverse(ColorSchemes.Blues_7))
             axislegend(ax22, position = :rb)
+            rowgap!(panel2, 0)
 
-            panel1 = fig[2,1] = GridLayout()
+            panel1 = fig[1,2] = GridLayout()
             Label(panel1[1, 1, TopLeft()], "(c)", padding = (-40, 0, -5, 0), fontsize = 16)
                 ax1 = Axis(panel1[1,1])
                 ax1.ylabel = L"f \,\, \mathrm{(Hz)}"
@@ -100,12 +101,10 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Blues_7), marker = 
                 lab = [L"1.0, \,  \infty", L"1.02, \, 1.25", 
                     L"1.04, \, 0.9", L" 1.06, \,  0.78", L" 1.09, \,  0.66", L" 1.15, \,  0.58"]
                 group_l = [LineElement(linestyle = :solid, color = reverse(ColorSchemes.Blues_7)[i], linewidth = 3) for i in eachindex(lab)]
-                axislegend(ax1, group_l, lab, L"\lambda_\theta, \,\, \bar{R}/w_0:"; position = :rb, labelsize = 14, orientation = :horizontal, nbanks = 3, 
-                    titlesize = 20, titlehalign= :right, titlegap = 1, rowgap = 0)
-                colgap!(panel1,0)
-                rowsize!(fig.layout, 2, Relative(65/100))
-
-    rowgap!(fig.layout, 0)
+                axislegend(ax1, group_l, lab, L"\lambda_\theta, \,\, \bar{R}/w_0:"; position = (1.01, -0.1), 
+                    labelsize = 12, orientation = :horizontal, nbanks = 3, patchsize = (15, 20), 
+                    titlesize = 18, titlehalign= :right, titlegap = 1, rowgap = 0)
+    colsize!(fig.layout, 2, Relative(1/2))
     display(fig)
     save(joinpath(@__DIR__,"Figure6.pdf"),fig; pt_per_unit = 1)
 end      

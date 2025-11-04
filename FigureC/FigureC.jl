@@ -4,7 +4,7 @@ cd(@__DIR__)
 include("../preamble.jl")
 
 with_theme(My_theme) do 
-    fig = Figure(size = (502, 220), figure_padding = (1,14,1,10))
+    fig = Figure(size = (402, 176), figure_padding = (1,14,1,10))
         ax21 = Axis(fig[1,1])
         ax21.aspect = DataAspect()
         ax21.limits = (-12, 12, -2.5, 16)
@@ -44,7 +44,7 @@ with_theme(My_theme) do
         text!(ax21, 5.5, 6, text = L"\bar{R}", align = (:center, :top), fontsize = 20)
         # Pressure
         text!(ax21, 0, 10.5, text = L"P^\infty", align = (:center, :center), fontsize = 20)
-        text!(ax21, -0.35, 13.1, text = L"P^\infty + P'", align = (:center, :center), fontsize = 20)
+        text!(ax21, -0.35, 13.5, text = L"P^\infty + P'", align = (:center, :center), fontsize = 20)
 
         
     display(fig)

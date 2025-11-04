@@ -18,7 +18,7 @@ panel2files = panel2files[[4,2,5,1,3]]
 
 with_theme(My_theme, palette = (color = reverse(ColorSchemes.Set1_5)[[1,3,2,4,5]], marker = [:circle])) do 
     x = collect(1e-3:1100)
-    fig = Figure(size = (2*502, 2/3*502), figure_padding = (2,14,2,2)) 
+    fig = Figure(size = (2*402, 2/3*402), figure_padding = (2,2,2,2)) 
         
         # Panel 1: dispersion relation
         panel1 = fig[1,1] = GridLayout()
@@ -64,7 +64,7 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Set1_5)[[1,3,2,4,5]
                 θa = pi/2 * 1.3
                 xa = ra .* cos.(θa)
                 ya = ra .* sin.(θa)
-                ura = [1, -1]
+                ura = [1, -1] * 7.5
                 uxa = ura .* cos.(θa)
                 uya = ura .* sin.(θa)
                 # Outer gradient
@@ -80,13 +80,13 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Set1_5)[[1,3,2,4,5]
                 arrows!(inset, xa, ya, uxa, uya, arrowsize = 16)
                 text!(inset, -10, 60 , text = L"h", align = (:center, :center), fontsize = 20)
                 # x axis symbol
-                poly!(inset, Circle(Point2f(-65, -40), 7), 
+                poly!(inset, Circle(Point2f(-65, -30), 7), 
                     strokecolor = :black, strokewidth = 1.3, color = (:white, 0))
-                lines!(inset, -65 .+ [-7, 7] .* cos(pi/4), -40 .+ [-7, 7 ] .* sin(pi/4), 
+                lines!(inset, -65 .+ [-7, 7] .* cos(pi/4), -30 .+ [-7, 7 ] .* sin(pi/4), 
                     color = :black, linewidth = 1.3)
-                lines!(inset, -65 .+ [-7, 7] .* cos(pi/4), -40 .+ [7, -7 ] .* sin(pi/4), 
+                lines!(inset, -65 .+ [-7, 7] .* cos(pi/4), -30 .+ [7, -7 ] .* sin(pi/4), 
                     color = :black, linewidth = 1.3)
-                text!(inset, -46, -48, text = L"\mathbf{e}_x", 
+                text!(inset, -46, -36, text = L"\mathbf{e}_x", 
                     align = (:center, :center), fontsize = 16)
                 
         # Panel 2: Low frequency zoom + 
@@ -115,9 +115,9 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Set1_5)[[1,3,2,4,5]
                     color = tuple.(ColorSchemes.Set1_4[1],0.5), linestyle = :dash)
                 lines!(ax2, x, (x).^2 .* sqrt.(3*μs*R*h ./ (3*ρf)) / (2*pi),
                     label = "Eq. (4)", color = ColorSchemes.Set1_4[1])
-            leg = Legend(panel2[2,1], ax2, orientation = :horizontal, nbanks = 5, labelsize = 16, tellheight = true, patchsize =(35, 20))
+            leg = Legend(panel2[2,1], ax2, orientation = :horizontal, nbanks = 5, labelsize = 14, tellheight = true, patchsize =(35, 20), rowgap = -1)
             leg.alignmode = Mixed(bottom = 0)
-        rowgap!(panel2, 10)
+        rowgap!(panel2, -5)
 
         # panel3: mode shapes
         panel3 = fig[1,3] = GridLayout()
