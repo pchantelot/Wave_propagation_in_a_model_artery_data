@@ -5,6 +5,7 @@ include("../preamble.jl")
 
 tfiles = filter(x -> occursin("disp",x),readdir(joinpath(@__DIR__,"tension/")))
 tpredic = filter(x -> occursin("_2",x),readdir(joinpath(@__DIR__,"tension/")))
+tpredicNH = filter(x -> occursin("_NH",x),readdir(joinpath(@__DIR__,"tension/")))
 
 with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [:circle])) do 
     fig = Figure(size = (2 * 402, 2/3 * 402), figure_padding = (2,16,2,2))
@@ -84,6 +85,12 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [
             @unpack f,k,s = data
             lines!(ax12, k, f, color = tuple.(reverse(ColorSchemes.Reds_4)[i], s ./ maximum(s)),
                 label = L"\lambda_z = %$(parse(Float32,tpredic[i][6:end-7])/100)" => (; color = reverse(ColorSchemes.Reds_4)[i]))
+        end
+        for i in eachindex(tpredicNH)
+            data = load(joinpath(@__DIR__,"tension/",tpredicNH[i]))
+            @unpack f,k,s = data
+            lines!(ax12, k, f, color = tuple.(reverse(ColorSchemes.Reds_4)[i+1], s ./ maximum(s)),
+                linestyle = :dot)
         end
         axislegend(ax12, position = :rb, labelsize = 16)
     
