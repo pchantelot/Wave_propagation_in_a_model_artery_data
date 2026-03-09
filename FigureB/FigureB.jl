@@ -95,6 +95,7 @@ splA = Spline1D(x, 1 .+ Ab/w0^2)
 dAdP = derivative(splA, x; nu = 1)
 vMKlin = sqrt.((w0^2 .+ Ab) ./ (ρf * w0^2/(ρf*g*1e-2) .* dAdP))
 save(joinpath(@__DIR__,"vMKlin.jld2"),"ΔP",P,"v",vMKlin)
+
 # 2. equivalent strip model
 vb = Vector{Float64}()
 for i in eachindex(x)

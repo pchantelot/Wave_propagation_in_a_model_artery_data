@@ -92,7 +92,12 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [
             lines!(ax12, k, f, color = tuple.(reverse(ColorSchemes.Reds_4)[i+1], s ./ maximum(s)),
                 linestyle = :dot)
         end
-        axislegend(ax12, position = :rb, labelsize = 16)
+        lab = [L"λ_z = 1.0", L"λ_z = 1.09", L"λ_z = 1.26"]
+        group_l = [[LineElement(linestyle = :solid, color = reverse(ColorSchemes.Reds_4)[i], linewidth = 3, points = Point2f[(-2, 0.5),(-1,0.5)]), LineElement(linestyle = :dot, color = reverse(ColorSchemes.Reds_4)[i], linewidth = 3)] for i in eachindex(lab)]
+        #axislegend(ax12, position = :rb, labelsize = 16)
+        axislegend(ax12, group_l, lab; position = (1.01, 0), 
+                    labelsize = 16, orientation = :horizontal, nbanks = 3, patchsize = (15, 20), 
+                    titlesize = 18, titlehalign= :right, titlegap = 1, rowgap = 0)
     
     display(fig)
     save(joinpath(@__DIR__,"Figure3.pdf"),fig; pt_per_unit = 1)
