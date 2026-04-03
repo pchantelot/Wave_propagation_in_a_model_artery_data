@@ -20,7 +20,7 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Blues_7), marker = 
         Label(panel2[1, 2, TopLeft()], "(b)", padding = (-40, 0, -5, 0), fontsize = 16)
             ax21 = Axis(panel2[1,1])
             ax21.ylabel = L"f \,\, \mathrm{(Hz)}"
-            ax21.xlabel = L"k_x \,\, \mathrm{(1/m)}"
+            ax21.xlabel = L"\mathrm{Re}\left(k_x\right) \,\, \mathrm{(1/m)}"
             ax21.limits = (0, 1000, 0, 350)
             for name in wnames[1:1]
                 data = load(joinpath(@__DIR__,"dispersion/",name))
@@ -76,7 +76,7 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Blues_7), marker = 
             Label(panel1[1, 1, TopLeft()], "(c)", padding = (-40, 0, -5, 0), fontsize = 16)
                 ax1 = Axis(panel1[1,1])
                 ax1.ylabel = L"f \,\, \mathrm{(Hz)}"
-                ax1.xlabel = L"k_x \,\, \mathrm{(1/m)}"
+                ax1.xlabel = L"\mathrm{Re}\left(k_x\right) \,\, \mathrm{(1/m)}"
                 ax1.limits = (0, 1000, 0, 350)
                 ax1.xticks = ([0, 100, 500, 1000], ["0", L"1/w_0", "500", "1000"])
                 pressures = Vector{LaTeXString}()

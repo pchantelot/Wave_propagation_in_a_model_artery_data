@@ -45,7 +45,7 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.OKeeffe2[1:2:end]),
         Label(panel2[1, 1, TopLeft()], "(a)", padding = (-35, 0, -5, 0), fontsize = 16)
             ax2 = Axis(panel2[1,1])
             ax2.ylabel = L"f \,\, \mathrm{(Hz)}"
-            ax2.xlabel = L"k_x \,\, \mathrm{(1/m)}"
+            ax2.xlabel = L"\mathrm{Re}\left(k_x\right) \,\, \mathrm{(1/m)}"
             ax2.limits = (0, 800, 0, 350)
             for name in afiles  
                 data = load(joinpath(@__DIR__,"dispersion/",name))

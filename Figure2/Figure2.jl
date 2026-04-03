@@ -132,7 +132,7 @@ with_theme(My_theme, palette = (color = ColorSchemes.Blues_7, marker = [:circle]
             #ax3.alignmode = Outside()
             ax3.limits = (0, 1000, 0, 350)
             ax3.ylabel = L"$f$ (Hz)"
-            ax3.xlabel = L"k_x \,\, \mathrm{(1/m)}"
+            ax3.xlabel = L"\mathrm{Re}\left(k_x\right) \,\, \mathrm{(1/m)}"
             for i in eachindex(p3names)[1:2]
                 data = load(joinpath(@__DIR__,"dispersion/",p3names[i]))
                 @unpack f, k, ΔP = data

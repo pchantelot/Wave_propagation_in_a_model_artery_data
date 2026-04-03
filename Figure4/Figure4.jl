@@ -13,7 +13,7 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.RdPu_4), marker = [
 
         ax22 = Axis(fig[1,1])
         ax22.ylabel = L"f \,\, \mathrm{(Hz)}"
-        ax22.xlabel = L"k_x \,\, \mathrm{(1/m)}"
+        ax22.xlabel = L"\mathrm{Re}\left(k_x\right) \,\, \mathrm{(1/m)}"
         ax22.limits = (0, 800, 0, 350)
         for i in eachindex(cfiles) 
             data = load(joinpath(@__DIR__,"courbure/",cfiles[i]))

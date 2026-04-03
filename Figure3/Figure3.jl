@@ -73,7 +73,7 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [
         ax12 = Axis(panel2[1,1])
         #ax12.alignmode = Outside()
         ax12.ylabel = L"f \,\, \mathrm{(Hz)}"
-        ax12.xlabel = L"k_x \,\, \mathrm{(1/m)}"
+        ax12.xlabel = L"\mathrm{Re}\left(k_x\right) \,\, \mathrm{(1/m)}"
         ax12.limits = (0, 800, 0, 350)
         for name in tfiles  
             data = load(joinpath(@__DIR__,"tension/",name))
