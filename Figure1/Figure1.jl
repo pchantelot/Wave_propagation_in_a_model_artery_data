@@ -172,5 +172,5 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Set1_5)[[1,3,2,4,5]
     colsize!(fig.layout, 2, Relative(1/6))
     colgap!(fig.layout, 10)
     display(fig)
-    save(joinpath(@__DIR__,"Figure1.pdf"),fig; pt_per_unit = 1)
+    save(joinpath(@__DIR__,"Figure1.pdf"),fig; pt_per_unit = 1, pdf_version = "1.5")
 end

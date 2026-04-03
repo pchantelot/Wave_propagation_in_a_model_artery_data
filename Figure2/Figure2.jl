@@ -144,5 +144,5 @@ with_theme(My_theme, palette = (color = ColorSchemes.Blues_7, marker = [:circle]
     rowsize!(fig.layout, 1, Relative(3/5))
     rowgap!(fig.layout, 0)
     display(fig)
-    save(joinpath(@__DIR__,"Figure2.pdf"),fig; pt_per_unit = 1)
+    save(joinpath(@__DIR__,"Figure2.pdf"),fig; pt_per_unit = 1, pdf_version = "1.5")
 end  

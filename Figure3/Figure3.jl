@@ -100,5 +100,5 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.Reds_4), marker = [
                     titlesize = 18, titlehalign= :right, titlegap = 1, rowgap = 0)
     
     display(fig)
-    save(joinpath(@__DIR__,"Figure3.pdf"),fig; pt_per_unit = 1)
+    save(joinpath(@__DIR__,"Figure3.pdf"),fig; pt_per_unit = 1, pdf_version = "1.5")
 end      

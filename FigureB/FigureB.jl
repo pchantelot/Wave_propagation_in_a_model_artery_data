@@ -86,7 +86,7 @@ with_theme(My_theme) do
             lines!(ax22, P, 1. ./ (κbm*w0), color = :black)
 
     display(f)
-    save(joinpath(@__DIR__,"FigureB.pdf"), f)
+    save(joinpath(@__DIR__,"FigureB.pdf"), f, pdf_version = "1.5")
 end
 
 # Saving the associated Moens Korteweg velocity

@@ -94,5 +94,5 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.OKeeffe2[1:2:end]),
     colsize!(fig.layout, 1, Relative(2/3))
     rowgap!(fig.layout, 0)
     display(fig)
-    save(joinpath(@__DIR__,"Figure5.pdf"),fig; pt_per_unit = 1)
+    save(joinpath(@__DIR__,"Figure5.pdf"),fig; pt_per_unit = 1, pdf_version = "1.5")
 end      

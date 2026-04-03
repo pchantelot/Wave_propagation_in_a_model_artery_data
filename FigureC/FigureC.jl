@@ -48,7 +48,7 @@ with_theme(My_theme) do
 
         
     display(fig)
-    save(joinpath(@__DIR__,"FigureC.pdf"),fig; pt_per_unit = 1)
+    save(joinpath(@__DIR__,"FigureC.pdf"),fig; pt_per_unit = 1, pdf_version = "1.5")
 end      
 
 ## Saving pie syntax for the future

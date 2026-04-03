@@ -65,5 +65,5 @@ with_theme(My_theme, palette = (color = reverse(ColorSchemes.RdPu_4), marker = [
         text!(ax21, 14, 11, text = L"\theta", align = (:left, :center), fontsize = 16)
         
     display(fig)
-    save(joinpath(@__DIR__,"Figure4.pdf"),fig; pt_per_unit = 1)
+    save(joinpath(@__DIR__,"Figure4.pdf"),fig; pt_per_unit = 1, pdf_version = "1.5")
 end      
